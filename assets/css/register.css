@@ -46,7 +46,8 @@ html, body {
 }
 
 ::placeholder { /* Most modern browsers support this now. */
-   color:    #fff;
+   color:    #fff; 
+   /* a0a0a0; */
 }
 
 #inputContainer {
@@ -72,7 +73,37 @@ html, body {
     width: 100%;
 }
 
+#inputContainer label {
+    color: #fff;
+    font-size: 13px;
+    margin-top: 15px;
+}
 
+#inputContainer button {
+    background-color: transparent;
+    border: solid 2px #fff;
+    border-radius: 250px;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 20px auto;
+    height: 41px;
+    width: 100%;   
+}
+
+#inputContainer button:hover {
+    cursor: pointer;
+}
+
+.hasAccountText span {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.hasAccountText {
+    text-align: center
+}
 
 
 

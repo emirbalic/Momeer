@@ -22,7 +22,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Momeer</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/register.css">
+    
+    <link rel="stylesheet" type="text/css" href="assets/css/register.css"></link>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/register.js"></script>
 </head>
 <body>
     <div id="background">
@@ -42,6 +46,10 @@
                     <input id="loginPassword" type="password" name="loginPassword" placeholder="password" required> 
                     </p>
                     <button type="submit" name="loginButton">Submit</button>
+
+                    <div class="hasAccountText"> 
+                        <span id="hideLogin">Don't have an account yet? Signup here </span>
+                    </div>
                 </form>
 
                 <form action="register.php" id="registerForm" method="POST">
@@ -96,6 +104,9 @@
                     <input id="password2" type="password" name="password2" placeholder="password" required> 
                     </p>
                     <button type="submit" name="registerButton">Sign Up</button>
+                    <div class="hasAccountText"> 
+                        <span id="hideRegister">Already have an account? Login here </span>
+                    </div>
                 </form>
             </div>
         </div> 
