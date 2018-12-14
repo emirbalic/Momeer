@@ -29,6 +29,25 @@
     <script src="assets/js/register.js"></script>
 </head>
 <body>
+    <?php
+        if(isset($_POST['registerButton'])) {
+            echo '<script>
+                $(document).ready(function(){
+                    $("#loginForm").hide();
+                    $("#registerForm").show();
+                });
+                </script>';
+        } else {
+            
+            echo '<script>
+                    $(document).ready(function(){
+                        $("#loginForm").show();
+                        $("#registerForm").hide();
+                    });
+                </script>';
+        }
+    ?>
+
     <div id="background">
         <div id="loginContainer">
             <div id='inputContainer'>
@@ -39,7 +58,7 @@
 
                     <label for="loginUsername">Username</label>
                     
-                    <input id="loginUsername" type="text" name="loginUsername" placeholder="e.g. John Doe"  required> 
+                    <input id="loginUsername" type="text" name="loginUsername" value="<?php getInputValue('loginUsername') ?>" placeholder="e.g. John Doe"  required> 
                     </p>
                     <p>
                     <label for="loginPassword">Password</label>
@@ -108,6 +127,15 @@
                         <span id="hideRegister">Already have an account? Login here </span>
                     </div>
                 </form>
+            </div>
+            <div id="loginText">
+                <h1> Listen to the great music </h1>
+                <h2> Free songs libraries </h2>
+                <ul>
+                    <li>Discover new music</li>
+                    <li>Create your own playlist</li>
+                    <li>Follow your favorite artists</li>
+                </ul>
             </div>
         </div> 
     </div>   

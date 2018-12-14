@@ -20,6 +20,7 @@
     <title>Document</title>
 </head>
 <body>
-    Hello Music ! 
+     <div id="nowPlayingBarContainer">
+</div>
 </body>
 </html>
