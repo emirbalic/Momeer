@@ -1,34 +1,23 @@
-<?php
+<?php include("includes/header.php"); ?>
 
-    include("includes/config.php");
+    <h1 class="pageHeadingBig">Add to your liking</h1>
+    <div class="gridViewContainer">
+        <?php 
+            $albumQuery = mysqli_query($con, 
+            "SELECT * 
+            FROM albums
+            ORDER BY RAND() LIMIT 5");
 
-    // session_destroy();
-    if(isset($_SESSION['userLoggedIn'])) {
-        $userLoggedIn = $_SESSION['userLoggedIn'];
-    } else {
-        header("Location: register.php");
-    }
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Momeer</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
-<body>
-    <div id="mainContainer">
-        <div id="topContainer">
-            <?php include("includes/navBarContainer.php") ?>
-            <div>
-
-            </div>
-        </div>
-        <?php include("includes/nowPlayingBarContainer.php")  ?>
+            while($row = mysqli_fetch_array($albumQuery)) {
+                    echo "<div class='gridViewItem'>
+                    <a href='album.php?id=" . $row['id'] . "'>
+                        <img src='". $row['artworkPath'] ."'>
+                        <div class='gridViewInfo'>"
+                        . $row['title'] .
+                        "</div>
+                    </a>
+                </div>";
+            }
+        ?>
     </div>
-</body>
-</html>
+<?php include("includes/footer.php"); ?>
