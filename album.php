@@ -12,7 +12,6 @@
    ?>
 
 <div class="entityInfo">
-
    <div class="leftSection">
         <img src="<?php echo $album->getArtworkPath(); ?>" alt="Album artwork">
    </div>
@@ -21,6 +20,19 @@
         <p>By <?php echo $artist->getName() ?> </p>
         <p> <?php echo $album->countSongs() ?> songs </p>
    </div>
+</div>
+<div class="tracklistContainer">
+   <ul class="tracklist">
+
+        <?php
+            $songIdArray = $album->getSongIds();
+
+            foreach($songIdArray as $songId) {
+                echo $songId . "<br>";
+            }
+        ?>
+
+   </ul>
 </div>
 
 
