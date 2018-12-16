@@ -33,6 +33,7 @@
         return $this->title;
     }
     public function getArtist () {
+
     return new Artist($this->con, $this->artistId);
     }
     public function getAlbum () {
