@@ -44,6 +44,14 @@
  
             return new Artist($this->con, $this->artistId);
         }
+
+        public function countSongs () {
+            $query = mysqli_query ($this->con, 
+            "SELECT id
+            FROM songs
+            WHERE album='$this->id'");
+            return mysqli_num_rows($query);
+        }
     }
    
 ?>
