@@ -22,8 +22,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Momeer</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </head>
 <body>
+
     <div id="mainContainer">
         <div id="topContainer">
             <?php include("includes/navBarContainer.php") ?>

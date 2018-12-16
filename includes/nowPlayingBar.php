@@ -1,3 +1,65 @@
+<?php
+
+    $songQuery = mysqli_query($con, "SELECT id FROM songs ORDER BY RAND() LIMIT 10");
+
+    $resultArray = array();
+
+    while($row = mysqli_fetch_array($songQuery)) {
+        array_push($resultArray, $row['id']);
+    }
+
+    $jsonArray = json_encode($resultArray);
+
+?>
+
+<script>
+    
+    $(document).ready(function (){
+        currentPlaylist = <?php echo $jsonArray; ?>;
+        audioElement = new Audio();
+        setTrack(currentPlaylist[0], currentPlaylist, false);
+    });
+
+    function setTrack(trackId, newPlaylist, play) {
+
+        // $.post("includes/handlers/ajax/getSongJson.php" , {songId:trackId}, function(data){
+        //     var track = JSON.parse(data);
+
+        //     audioElement.setTrack(track.path); 
+        //     audioElement.play();
+        // });
+
+        $.post("includes/handlers/ajax/getSongJson.php" , {songId:trackId}, (data) => {
+            var track = JSON.parse(data);
+            $(".trackName span").text(track.title);
+            $.post("includes/handlers/ajax/getArtistJson.php" , {artistId:track.artist}, (data) => {
+            
+                var artist = JSON.parse(data);
+                $(".artistName span").text(artist.name);
+            });
+            audioElement.setTrack(track.path); 
+            // audioElement.play();
+        });
+
+        if(play) {
+            audioElement.play();
+        }
+    }
+    function playSong() {
+        $(".controlButton.play").hide();
+        $(".controlButton.pause").show();
+        audioElement.play();
+    }
+    function pauseSong() {
+        $(".controlButton.play").show();
+        $(".controlButton.pause").hide();
+        audioElement.pause();
+    }
+
+
+
+</script>
+
 <div id="nowPlayingBarContainer">
     <div id="nowPlayingBar">
         <div id="nowPlayingLeft">
@@ -7,10 +69,10 @@
                 </span>
                 <div class="trackInfo">
                     <span class="trackName">
-                        <span>Hello Spaceboy</span>
+                        <span></span>
                     </span>
                     <span class="artistName">
-                        <span>David Bowie</span>
+                        <span></span>
                     </span>
                 </div>
             </div>
@@ -24,10 +86,10 @@
                 <button class="controlButton previous" title="Previous button">
                     <img src="assets/images/icons/previous.png" alt="Previous">
                 </button>
-                <button class="controlButton play" title="Play button">
+                <button class="controlButton play" title="Play button" onClick="playSong()">
                     <img src="assets/images/icons/play.png" alt="Play">
                 </button>
-                <button class="controlButton pause" title="Pause button" style="display: none">
+                <button class="controlButton pause" title="Pause button" style="display: none" onClick="pauseSong()">
                     <img src="assets/images/icons/pause.png" alt="Pause">
                 </button>
                 <button class="controlButton next" title="Next button">
@@ -66,3 +128,4 @@
         </div>
         </div>
 </div>
+
