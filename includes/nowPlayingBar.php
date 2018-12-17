@@ -66,6 +66,14 @@
         audioElement.setTime(seconds);
     }
 
+    function previousSong () {
+        if(audioElement.audio.currentTime >=3 || currentIndex == 0) {
+            audioElement.setTime(0);
+        } else {
+            currentIndex = currentIndex - 1;
+            setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
+        }
+    }
     function nextSong() {
 
         if(repeat == true) {
@@ -86,6 +94,13 @@
         repeat = !repeat;
         var imageName = repeat ? "repeat-active.png" : "repeat.png";
         $(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
+    }
+
+    function setMute () {
+        audioElement.audio.muted = !audioElement.audio.muted;
+
+        var imageName = audioElement.audio.muted ? "volume-mute.png" : "volume.png";
+        $(".controlButton.volume img").attr("src", "assets/images/icons/" + imageName);
     }
 
     function setTrack(trackId, newPlaylist, play) {
@@ -160,19 +175,19 @@
                 <button class="controlButton shuffle" title="Shuffle button">
                     <img src="assets/images/icons/shuffle.png" alt="Shuffle">
                 </button>
-                <button class="controlButton previous" title="Previous button">
+                <button class="controlButton previous" title="Previous button" onclick="previousSong()">
                     <img src="assets/images/icons/previous.png" alt="Previous">
                 </button>
-                <button class="controlButton play" title="Play button" onClick="playSong()">
+                <button class="controlButton play" title="Play button" onclick="playSong()">
                     <img src="assets/images/icons/play.png" alt="Play">
                 </button>
                 <button class="controlButton pause" title="Pause button" style="display: none" onclick="pauseSong()">
                     <img src="assets/images/icons/pause.png" alt="Pause">
                 </button>
-                <button class="controlButton next" title="Next button" onclick=nextSong()>
+                <button class="controlButton next" title="Next button" onclick="nextSong()">
                     <img src="assets/images/icons/next.png" alt="Next">
                 </button>
-                <button class="controlButton repeat" title="Repeat button" onclick=setRepeat()>
+                <button class="controlButton repeat" title="Repeat button" onclick="setRepeat()">
                     <img src="assets/images/icons/repeat.png" alt="Repeat">
                 </button>
             </div>
@@ -193,7 +208,7 @@
     </div>
         <div id="nowPlayingRight">
             <div class="volumeBar">
-                <button class="controlButton volume" title="Volume button">
+                <button class="controlButton volume" title="Volume button" onclick="setMute()">
                     <img src="assets/images/icons/volume.png" alt="Volume">
                 </button>
                 <div class="progressBar">
