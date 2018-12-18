@@ -22,6 +22,22 @@
             $artist = mysqli_fetch_array($artistQuery);
             return $artist['name'];
         }
+
+        public function getSongIds() {
+            $songQuery = mysqli_query($this->con,
+            "SELECT id
+            FROM songs
+            WHERE artist = $this->id
+            ORDER BY plays DESC");
+
+            $idArray = array();
+
+            while ($row = mysqli_fetch_array ($songQuery)) {
+                array_push($idArray, $row['id']);
+            }
+
+            return $idArray;
+        }
     }
    
 ?>
