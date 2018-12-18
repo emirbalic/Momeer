@@ -158,13 +158,13 @@
             
             });
             audioElement.setTrack(track); 
-            // audioElement.play();
-            // playSong();
+            
+            if(play) {
+                //audioElement.play();
+                playSong();
+            }
         });
 
-        if(play) {
-            audioElement.play();
-        }
     }
     function playSong() {
         if(audioElement.audio.currentTime == 0) {
