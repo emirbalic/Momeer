@@ -9,9 +9,9 @@
             $this->id = $id;
         }  
 
-        // public function getId() {
-		// 	return $this->id;
-		// }
+        public function getId() {
+			return $this->id;
+		}
         
         public function getName () {
             $artistQuery = mysqli_query($this->con, 
