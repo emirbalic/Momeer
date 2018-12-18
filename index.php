@@ -1,4 +1,6 @@
-<?php include("includes/header.php"); ?>
+<?php 
+include("includes/includedFiles.php"); 
+?>
 
     <h1 class="pageHeadingBig">Add to your liking</h1>
     <div class="gridViewContainer">
@@ -20,4 +22,3 @@
             }
         ?>
     </div>
-<?php include("includes/footer.php"); ?>

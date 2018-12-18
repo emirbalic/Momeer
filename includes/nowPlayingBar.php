@@ -159,7 +159,7 @@
             });
             audioElement.setTrack(track); 
             // audioElement.play();
-            playSong();
+            // playSong();
         });
 
         if(play) {
