@@ -21,14 +21,15 @@ $artist = new Artist($con, $artistId);
                 <?php echo $artist->getName(); ?>
             </h1>
             <div class="headerButton">
-                <button class="button pink">Play</button>
+                <button class="button pink" onclick="playFirstSong()">PLAY</button>
             </div>
         </div>
     </div>
 </div>
 
 <div class="tracklistContainer borderBottom">
-   <ul class="tracklist">
+    <h2>SONGS</h2>
+    <ul class="tracklist">
 
         <?php
             $songIdArray = $artist->getSongIds();
@@ -72,3 +73,24 @@ $artist = new Artist($con, $artistId);
 
    </ul>
 </div>
+
+<div class="gridViewContainer">
+    <h2>ALBUMS</h2>
+        <?php 
+            $albumQuery = mysqli_query($con, 
+            "SELECT * 
+            FROM albums
+            WHERE artist = '$artistId'");
+
+            while($row = mysqli_fetch_array($albumQuery)) {
+                    echo "<div class='gridViewItem'>
+                    <span role='link' tabindex='0' onclick='openPage(\"album.php?id=" . $row['id'] . "\")' >
+                        <img src='". $row['artworkPath'] ."'>
+                        <div class='gridViewInfo'>"
+                        . $row['title'] .
+                        "</div>
+                    </span>
+                </div>";
+            }
+        ?>
+    </div>
