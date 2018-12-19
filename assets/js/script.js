@@ -23,6 +23,24 @@ $(window).scroll(() => {
     hideOptionsMenu();
 });
 
+//154 select the id of the song for a playlist when clicked on select tag
+$(document).on("change", "select.playlist", function(){
+    var select = $(this);
+    var playlistId = select.val(); //maybe not going to work with arrow func?? yes, it would not...
+    var songId = select.prev(".songId").val(); //prev takes the immidiate ancestor
+
+    $.post("includes/handlers/ajax/addToPlaylist.php", {playlistId: playlistId, songId:songId})
+    .done(function(error){
+        if(error != "") {
+            alert(error);
+            return;
+        }
+       hideOptionsMenu();
+       select.val(""); 
+    });
+    
+});
+
 //114
 function openPage (url) {
 
@@ -77,9 +95,11 @@ function hideOptionsMenu () {
 }
 
 function showOptionMenu (button) {
+    var songId = $(button).prevAll(".songId").val(); // prevAll takes multiple ancestors if needed to, as opposed to prev that stops and imidiate ancestor
     var menu = $(".optionsMenu");
     var menuWidth = menu.width();
-    
+    menu.find(".songId").val(songId); // takes the options menu and goes and finds the song id which is the input hidden .songId
+
     var scrollTop = $(window).scrollTop(); //A distance from the top of the window to the top of a document
     var elementOffset = $(button).offset().top; // distance from top of document
 
