@@ -41,6 +41,12 @@ $(document).on("change", "select.playlist", function(){
     
 });
 
+function logout () {
+    $.post("includes/handlers/ajax/logout.php", function(){
+        location.reload();
+    });
+}
+
 //114
 function openPage (url) {
 
