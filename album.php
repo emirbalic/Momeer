@@ -46,7 +46,7 @@
                         <span class='artistName'>" . $albumArtist->getName() . "</span>
                     </div>
                     <div class='trackOptions'>
-                        <img class='optionsButton' src='assets/images/icons/more.png'/> 
+                        <img class='optionsButton' src='assets/images/icons/more.png' onclick='showOptionMenu(this)'/> 
                     </div>
                     <div class='trackDuration'>
                         <span class='duration'>". $albumSong->getDuration() ."</span>
@@ -57,14 +57,19 @@
 
             }
         ?>
-
         <script>
             var tempSongIds = '<?php echo json_encode($songIdArray); ?>';
             tempPlaylist = JSON.parse(tempSongIds);
         </script>
-
    </ul>
 </div>
+
+<nav class="optionsMenu">
+    <input type="hidden" class="songId">
+    <?php echo Playlist::getPlaylistDropdown($con, $userLoggedIn->getUsername()); ?>
+    <div class="item">Share on Facebook</div>
+    <div class="item">Send to a friend</div>
+</nav>
 
 
 
