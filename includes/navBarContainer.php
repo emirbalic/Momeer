@@ -21,6 +21,9 @@
             <div class="navItem">
                 <span role="link" tabindex="0" onclick="openPage('settings.php')" class="navItemLink"><?php echo $userLoggedIn->getUsername(); ?> </span>
             </div>
+            <div >
+                <img src="assets/images/profile-pics/bakke2ooo.jpg" class="profilePic" alt="pic" onclick="openPage('settings.php')">
+            </div>
         </div>
     </nav>
 </div>

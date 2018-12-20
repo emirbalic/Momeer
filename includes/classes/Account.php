@@ -31,7 +31,8 @@
 
             if(empty($this->errorArray) == true) {
                 //insert into db
-                return true; //$this->insertUserDetails($un, $fn, $ln, $em, $pw);
+                $this->insertUserDetails($un, $fn, $ln, $em, $pw); 
+                return true; 
             } else {
                 return false;
             }

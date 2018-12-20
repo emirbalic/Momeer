@@ -203,7 +203,13 @@ body {
     cursor: pointer;
 }
 
-.navItemLink .icon {
+.profilePic {
+    height: 50px;
+    width: 50;
+}
+
+.navItemLink .icon
+ {
     position: absolute;
     right: 0;
     top: 6px;
